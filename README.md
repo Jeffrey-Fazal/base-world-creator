@@ -36,6 +36,10 @@ Routed are located at src > app.js
 
 StoryBoard - used to display story from db
 
+## Styling
+
+* Can add themes from DaisyUI by modifying the tailwinds.config.js themes array and the html data-theme in index.html
+https://daisyui.com/docs/themes/
 
 #### Todos
 * Decide on default export (e.g sign out) or namespaced export (most things)
