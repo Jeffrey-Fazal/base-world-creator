@@ -1,10 +1,12 @@
-import { Story } from "./components/StoryBoard";
+import { Dice } from "../components/Dice";
+import { Story } from "../components/StoryBoard";
 
 export function Home() {
     return (
         <div>
             <h1 className="text-3xl font-bold underline">Welcome to the homeworld</h1>
             <Story />
+            <Dice />
             {/* Toast Starts */}
             <div className="toast">
                 <div className="alert alert-info">
