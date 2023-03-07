@@ -29,6 +29,9 @@ mindmap
 
 ```
 
+## React, Firebase and Authentication
+Firebase needs to be iniated before sharing the login state.
+
 ### Routes
 Routed are located at src > app.js
 
