@@ -24,3 +24,4 @@ yarn-error.log*
 
 # Auth
 .env
+src/firestore.js
