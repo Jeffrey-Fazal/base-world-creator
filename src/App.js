@@ -21,6 +21,8 @@ function App() {
         <Route path="/creator" element={<CreatorHome />} />
         <Route path="/player" element={<PlayerHome />} />
         <Route path="/profile" element={<Profile />} />
+        {/* Test Routes */}
+        {/* <Route path="/playersheet" element={<PlayerSheet />} /> Inactive atm / need to reimport */}
         {/* Authentication */}
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />

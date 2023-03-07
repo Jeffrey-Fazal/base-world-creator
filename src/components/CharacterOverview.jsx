@@ -1,4 +1,5 @@
 // Component will be used to show the latest stats from the database
+// ToDO: Demo contet and user/creator content
 export function CharacterOverview() {
     return (
         <div className="stats shadow">
