@@ -9,10 +9,12 @@ import { Profile } from "./pages/Profile";
 import SignOut from "./pages/SignOut";
 import Navbar from "./components/Navbar";
 
+
 function App() {
   return (
     <>
       <Navbar />
+      <div className="m-4">
       <Routes>
         {/* Public Routes */}
         <Route path="/" element={<Home />} />
@@ -28,6 +30,7 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signout" element={<SignOut />} />
       </Routes>
+      </div>
     </>
   );
 }

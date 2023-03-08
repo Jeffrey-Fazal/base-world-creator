@@ -24,4 +24,7 @@ yarn-error.log*
 
 # Auth
 .env
-src/firestore.js
+src/firebase.js
+
+# reference code
+Archieve/
