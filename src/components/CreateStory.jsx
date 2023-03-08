@@ -1,7 +1,7 @@
 // Creates and List Stories (summary)
-import { collection, addDoc, getDocs } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 import { useState, useEffect } from "react";
-import { db } from "/home/jeffrey/SEIc60/projects/Project3/root/base/src/firebase.js";
+import { db } from "../firebase.js";
 
 export function CreateStory() {
     const [story, setStory] = useState("");
@@ -9,17 +9,6 @@ export function CreateStory() {
     const [showStories, setShowStories] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const [errorMessage, setErrorMessage] = useState("");
-  
-    const handleSave = async () => {
-      try {
-        const docRef = await addDoc(collection(db, "Stories"), { content: story });
-        console.log("Document written with ID: ", docRef.id);
-        setStory("");
-      } catch (e) {
-        console.error("Error adding document: ", e);
-        setErrorMessage("Failed to save the story. Please try again later.");
-      }
-    };
   
     const handleListStories = async () => {
       try {
@@ -59,9 +48,6 @@ export function CreateStory() {
             value={story}
             onChange={(e) => setStory(e.target.value)}
           ></textarea>
-          <button className="btn btn-primary" onClick={handleSave}>
-            Save
-          </button>
         </div>
   
         <div>
