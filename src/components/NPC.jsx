@@ -4,8 +4,7 @@ import { useState } from "react";
 
 export function NPC() {
   const [NPC, setNPC] = useState([
-    { name: "John", Disposition: "Wizard", campaign: "Campaign A" },
-    { name: "Jane", Disposition: "Paladin", campaign: "Campaign B" }
+    { name: "Dobby", Disposition: "Good Elf", campaign: "Chamber of Secrets" }
   ]);
 
   const handleNameChange = (index, value) => {
