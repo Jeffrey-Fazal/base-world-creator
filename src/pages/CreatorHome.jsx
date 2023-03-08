@@ -33,21 +33,17 @@ export function CreatorHome() {
     console.log("Document written with ID: ", storyDocRef.id);
     console.log({ storyName, storyContent, party, npcs, setting, encounters, items });
   };
-  
-  
-  
 
   const handleNewStoryNameSave = (name) => {
     setStoryName(name);
   };
 
-  const handleCreateStorySave = (content) => {
-    setStoryContent(content);
+  const handleStoryChange = (newStory) => {
+    setStoryContent(newStory);
   };
-
-  const handleCreatePartySave = (partyData) => {
-    setParty(partyData);
-  };
+const handleCreatePartySave = (partyData) => {
+  setParty(partyData);
+};
 
   const handleNpcSave = (npcData) => {
     setNpcs((prevNpcs) => [...prevNpcs, npcData]);
@@ -72,7 +68,7 @@ export function CreatorHome() {
         <p>your world needs details...</p>
       </div>
       <NewStoryName onSave={handleNewStoryNameSave} />
-      <CreateStory onSave={handleCreateStorySave} />
+      <CreateStory onStoryChange={handleStoryChange} />
       <CreateParty onSave={handleCreatePartySave} />
       <NPC onSave={handleNpcSave} />
       <CreateSetting onSave={handleCreateSettingSave} />
