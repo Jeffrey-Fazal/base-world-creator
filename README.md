@@ -44,5 +44,10 @@ StoryBoard - used to display story from db
 * Can add themes from DaisyUI by modifying the tailwinds.config.js themes array and the html data-theme in index.html
 https://daisyui.com/docs/themes/
 
+## Dev Notes
+
+* Moved from using a vite react + tailwindscss server to doing everything manually
+* Code may be less dry, but at least it'll work (hopefully.)
+
 #### Todos
 * Decide on default export (e.g sign out) or namespaced export (most things)
