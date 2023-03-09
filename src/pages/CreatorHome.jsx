@@ -50,9 +50,6 @@ export function CreatorHome() {
     setNpcs((prevNpcs) => [...prevNpcs, ...npcData]);
   };  
   
-  
-  
-
   const handleCreateSettingSave = (settingData) => {
     setSetting(settingData);
   };
