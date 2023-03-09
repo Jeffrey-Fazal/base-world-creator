@@ -1,6 +1,4 @@
-// create and edit party
-
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 export function CreateParty(props) {
   const [party, setParty] = useState([
@@ -8,22 +6,35 @@ export function CreateParty(props) {
     { name: "Hagrid", class: "Giant", campaign: "Chamber of Secrets" }
   ]);
 
-  const handleSave = (e, index) => {
-    // create a deep copy of the party data to avoid mutating the original state
-    const partyData = JSON.parse(JSON.stringify(party)); 
-  
-    // update the corresponding value in the copied data
-    partyData[index].name = e.target.value;
+  const isRendering = useRef(false);
 
-    // call the onSave prop function with the party data as the argument
-    props.onSave(partyData);
+  const handleSave = (e, index) => {
+    if (isRendering.current) {
+      return;
+    }
   
-    // reset the party state
-    setParty([
-      { name: "", class: "", campaign: "" }
-    ]);
+    isRendering.current = true;
+    setTimeout(() => {
+      isRendering.current = false;
+    }, 0);
+  
+    const updatedCharacter = {
+      name: e.target.value,
+      class: party[index].class,
+      campaign: party[index].campaign,
+    };
+  
+    const updatedParty = party.map((character, idx) => {
+      if (idx === index) {
+        return updatedCharacter;
+      } else {
+        return character;
+      }
+    });
+  
+    props.onSave(updatedParty);
+    setParty(updatedParty);
   };
-  
   
   
 
@@ -88,56 +99,56 @@ export function CreateParty(props) {
                     <input
                       type="text"
                       className="input input-bordered"
-                      value={character.name}
-                      onChange={(e) => handleNameChange(index, e.target.value)}
-                      onBlur={(e) => handleSave(e, index)}
-                    />
-                  </td>
-                  <td>
-                    <input
-                      type="text"
-                      className="input input-bordered"
-                      value={character.class}
-                      onChange={(e) => handleClassChange(index, e.target.value)}
-                      onBlur={(e) => handleSave(e, index)}
-                    />
-                  </td>
-                  <td>
-                    <input
-                      type="text"
-                      className="input input-bordered"
-                      value={character.campaign}
-                      onChange={(e) => handleCampaignChange(index, e.target.value)}
-                      onBlur={(e) => handleSave(e, index)}
-                    />
-                  </td>
-                  <td>
-                    <button
-                      className="btn btn-ghost btn-xs"
-                      onClick={() => handleRemoveRow(index)}
-                      onBlur={(e) => handleSave(e, index)}
-                    >
-                      X
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-            {/* foot */}
-            <tfoot>
-              <tr>
-                <th>Name</th>
-                <th>Class</th>
-                <th>Campaign</th>
-                <th></th>
-              </tr>
-            </tfoot>
-          </table>
-        </div>
-        <div className="btn-group">
-          <button className="btn" onClick={handleAddRow}>Add Character</button>
-        </div>
-      </div>
-    </>
-  );
+                  value={character.name || ""}
+                  onChange={(e) => handleNameChange(index, e.target.value)}
+                  onBlur={(e) => handleSave(e, index)}
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  className="input input-bordered"
+                  value={character.class || ""}
+                  onChange={(e) => handleClassChange(index, e.target.value)}
+                  onBlur={(e) => handleSave(e, index)}
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  className="input input-bordered"
+                  value={character.campaign || ""}
+                  onChange={(e) => handleCampaignChange(index, e.target.value)}
+                  onBlur={(e) => handleSave(e, index)}
+                />
+              </td>
+              <td>
+                <button
+                  className="btn btn-ghost btn-xs"
+                  onClick={() => handleRemoveRow(index)}
+                  onBlur={(e) => handleSave(e, index)}
+                >
+                  X
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+        {/* foot */}
+        <tfoot>
+          <tr>
+            <th>Name</th>
+            <th>Class</th>
+            <th>Campaign</th>
+            <th></th>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+    <div className="btn-group">
+      <button className="btn" onClick={handleAddRow}>Add Character</button>
+    </div>
+  </div>
+</>
+);
 }
