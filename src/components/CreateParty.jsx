@@ -2,11 +2,30 @@
 
 import { useState } from "react";
 
-export function CreateParty() {
+export function CreateParty(props) {
   const [party, setParty] = useState([
-    { name: "John", class: "Wizard", campaign: "Campaign A" },
-    { name: "Jane", class: "Paladin", campaign: "Campaign B" }
+    { name: "Harry Potter", class: "Wizard", campaign: "Chamber of Secrets" },
+    { name: "Hagrid", class: "Giant", campaign: "Chamber of Secrets" }
   ]);
+
+  const handleSave = (e, index) => {
+    // create a deep copy of the party data to avoid mutating the original state
+    const partyData = JSON.parse(JSON.stringify(party)); 
+  
+    // update the corresponding value in the copied data
+    partyData[index].name = e.target.value;
+
+    // call the onSave prop function with the party data as the argument
+    props.onSave(partyData);
+  
+    // reset the party state
+    setParty([
+      { name: "", class: "", campaign: "" }
+    ]);
+  };
+  
+  
+  
 
   const handleNameChange = (index, value) => {
     setParty((prevParty) => {
@@ -71,6 +90,7 @@ export function CreateParty() {
                       className="input input-bordered"
                       value={character.name}
                       onChange={(e) => handleNameChange(index, e.target.value)}
+                      onBlur={(e) => handleSave(e, index)}
                     />
                   </td>
                   <td>
@@ -79,6 +99,7 @@ export function CreateParty() {
                       className="input input-bordered"
                       value={character.class}
                       onChange={(e) => handleClassChange(index, e.target.value)}
+                      onBlur={(e) => handleSave(e, index)}
                     />
                   </td>
                   <td>
@@ -87,12 +108,14 @@ export function CreateParty() {
                       className="input input-bordered"
                       value={character.campaign}
                       onChange={(e) => handleCampaignChange(index, e.target.value)}
+                      onBlur={(e) => handleSave(e, index)}
                     />
                   </td>
                   <td>
                     <button
                       className="btn btn-ghost btn-xs"
                       onClick={() => handleRemoveRow(index)}
+                      onBlur={(e) => handleSave(e, index)}
                     >
                       X
                     </button>
