@@ -5,7 +5,7 @@ import { CreateParty } from "../components/CreateParty";
 import { CreateSetting } from "../components/CreateSetting";
 import { CreateStory } from "../components/CreateStory";
 import { NewStoryName } from "../components/NewStoryName";
-import { NPC } from "../components/NPC";
+import { CreateNPCs } from "../components/NPC";
 
 import { db, collection, doc, setDoc } from "../firebase";
 
@@ -14,6 +14,7 @@ export function CreatorHome() {
   const [storyContent, setStoryContent] = useState("");
   const [party, setParty] = useState([]);
   const [npcs, setNpcs] = useState([]);
+  // const [cast, setCast] = useState([]); | try this
   const [setting, setSetting] = useState("");
   const [encounters, setEncounters] = useState([]);
   const [items, setItems] = useState([]);
@@ -41,13 +42,16 @@ export function CreatorHome() {
   const handleStoryChange = (newStory) => {
     setStoryContent(newStory);
   };
-const handleCreatePartySave = (partyData) => {
-  setParty(partyData);
-};
+  const handleCreatePartySave = (partyData) => {
+    setParty(partyData);
+  };
 
   const handleNpcSave = (npcData) => {
-    setNpcs((prevNpcs) => [...prevNpcs, npcData]);
-  };
+    setNpcs((prevNpcs) => [...prevNpcs, ...npcData]);
+  };  
+  
+  
+  
 
   const handleCreateSettingSave = (settingData) => {
     setSetting(settingData);
@@ -70,7 +74,7 @@ const handleCreatePartySave = (partyData) => {
       <NewStoryName onSave={handleNewStoryNameSave} />
       <CreateStory onStoryChange={handleStoryChange} />
       <CreateParty onSave={handleCreatePartySave} />
-      <NPC onSave={handleNpcSave} />
+      <CreateNPCs onSave={(npcData) => handleNpcSave(npcData, setNpcs)} />
       <CreateSetting onSave={handleCreateSettingSave} />
       <CreateEncounters onSave={handleEncounterSave} />
       <CreateItemsLoot onSave={handleCreateItemsLootSave} />
