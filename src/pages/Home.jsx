@@ -1,6 +1,8 @@
 // Main website: Home in navbar
 // <Route path="/" element={<Home />} />
 
+import { NavLink } from 'react-router-dom';
+
 import { Dice } from "../components/HomeComponents/Dice";
 import { Intro } from "../components/HomeComponents/Intro";
 import { Story } from "../components/StoryBoard";
@@ -24,8 +26,13 @@ export function Home() {
             {/* Toast Ends */}
         </div>
         <div className="btn-group">
-        <button className="btn">Login</button>
-        <button className="btn">Join</button>
+        <NavLink to="/login">
+            <button className="btn">Login</button>
+        </NavLink>
+        <NavLink to="/signup">
+            <button className="btn">Join</button>
+        </NavLink>
+
         </div>
         </>
     )
