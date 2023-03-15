@@ -1,17 +1,16 @@
 // Player page (individual to each player)
 // <Route path="/player" element={<PlayerHome />} />
 
-import { CharacterOverview } from "../components/CharacterOverview";
+import {CharacterOverview} from "../components/CharacterOverview";
 
 export function PlayerHome() {
-    return(
+    return (
         <>
-        <div>
-            <h1>Greetings Player</h1>
-            <br />
-            <h2>Characters</h2>
-            <CharacterOverview />
-        </div>
+            <div>
+                <h1>Greetings Players and Creators</h1>
+                <br/>
+                <CharacterOverview/>
+            </div>
         </>
     )
 }

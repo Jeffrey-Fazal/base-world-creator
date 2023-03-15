@@ -1,5 +1,6 @@
 // Placeholder page for signup
 // <Route path="/signup" element={<SignUp />} />
+import {Link} from 'react-router-dom';
 
 export function SignUp() {
     return (
@@ -13,7 +14,7 @@ export function SignUp() {
                 <label className="label">
                     <span className="label-text">Username</span>
                 </label>
-                <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" />
+                <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs"/>
                 <label className="label">
                 </label>
             </div>
@@ -22,7 +23,7 @@ export function SignUp() {
                 <label className="label">
                     <span className="label-text">Password</span>
                 </label>
-                <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" />
+                <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs"/>
                 <label className="label">
                 </label>
             </div>
@@ -31,12 +32,14 @@ export function SignUp() {
                 <label className="label">
                     <span className="label-text">Confirm Password</span>
                 </label>
-                <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" />
+                <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs"/>
                 <label className="label">
                 </label>
             </div>
 
-            <button className="btn btn-primary">Join now</button>
+            <Link to='/profile'>
+                <button className="btn btn-primary">Join now</button>
+            </Link>
 
         </>
     )
