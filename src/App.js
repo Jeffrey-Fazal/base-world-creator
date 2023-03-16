@@ -8,6 +8,7 @@ import {Story} from "./pages/Story";
 import {Profile} from "./pages/Profile";
 import SignOut from "./pages/SignOut";
 import Navbar from "./components/Navbar";
+import {ShowStories} from "./pages/ShowStory";
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
             <Route path="/creator" element={<CreatorHome />} />
             <Route path="/player" element={<PlayerHome />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/show-stories" element={<ShowStories />}/>
             {/* Test Routes */}
             {/* <Route path="/playersheet" element={<PlayerSheet />} /> Inactive atm / need to reimport */}
             {/* Authentication */}
