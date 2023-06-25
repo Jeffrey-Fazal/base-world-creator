@@ -2,6 +2,6 @@
 // Stories are created with ./src/components/CreatorComponents/StoryCreator.jsx
 export function Story() {
     return (<div className="m-4">
-            I want to tell you a story...
-        </div>)
+        I want to tell you a story...
+    </div>)
 }

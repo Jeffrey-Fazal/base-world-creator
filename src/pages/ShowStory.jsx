@@ -22,6 +22,7 @@ export function ShowStories() {
 
     return (
         <div>
+            <h1>The Start of a Journey</h1>
             {stories.map((story, index) => (
                 <div key={index} className="story-container p-4 m-4 bg-white rounded shadow-md">
                     <br />

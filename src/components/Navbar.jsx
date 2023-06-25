@@ -9,13 +9,14 @@ export default function Navbar() {
                 <ul>
                     <li><NavLink to="/">Adventurarr |</NavLink></li>
                     <li><NavLink to="/story"> Story | </NavLink></li>
-                    <li><NavLink className="underline" to="/creator">Creators | </NavLink></li>
+                    <li><NavLink to="/show-stories"> All Stories | </NavLink></li>
+                    <li><NavLink to="/creator">Creators | </NavLink></li>
                     <li><NavLink to="/player">Players | </NavLink></li>
                     <li><NavLink to="/profile">Profile | </NavLink></li>
                     {/* Add logic to show login or signout depending on user session */}
-                    {/* <li><NavLink to="/login">Login |</NavLink></li>
+                    <li><NavLink to="/login">Login |</NavLink></li>
                     <li><NavLink to="/signout"> SignOut |</NavLink></li>
-                    <li><NavLink to="/signup"> Join Us</NavLink></li> */}
+                    <li><NavLink to="/signup"> Join Us</NavLink></li>
                 </ul>
             </div>
         </nav>
